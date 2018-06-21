@@ -2017,7 +2017,8 @@ status_t ACodec::configureCodec(
     if (video) {
         // determine need for software renderer
         bool usingSwRenderer = false;
-        if (haveNativeWindow && mComponentName.startsWith("OMX.google.")) {
+        if (haveNativeWindow &&
+            (mComponentName.startsWith("OMX.google.") || mComponentName.startsWith("OMX.allegro."))) {
             usingSwRenderer = true;
             haveNativeWindow = false;
             (void)setPortMode(kPortIndexOutput, IOMX::kPortModePresetByteBuffer);
